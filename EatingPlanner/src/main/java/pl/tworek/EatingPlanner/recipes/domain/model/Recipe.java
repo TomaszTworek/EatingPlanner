@@ -6,15 +6,23 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import pl.tworek.EatingPlanner.ingredients.domain.model.Ingredient;
 import pl.tworek.EatingPlanner.recipes.domain.enumeration.EatLabel;
 
 import java.util.List;
 
+/**
+ * What about relation between oder objects? - Check this in project.
+ * What about ingredient relationship
+ * Think which one are VO: All of those whichare no objects like DishPhoto or Ingredients. i think
+ */
 @Getter
 @EqualsAndHashCode
 @Builder
 @ToString
 public class Recipe {
+
+    private final Long id;
 
     private final String name;
 
@@ -35,4 +43,6 @@ public class Recipe {
     private final Double callPerServing;
 
     private final List<EatLabel> eatLabels;
+
+    private final List<Ingredient> ingredients;
 }
