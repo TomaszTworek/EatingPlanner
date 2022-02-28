@@ -1,4 +1,4 @@
-package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.recipedb.mysql.entity;
+package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,4 +1,4 @@
-package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.recipedb.mysql;
+package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql;
 
 import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
 import pl.tworek.EatingPlanner.recipes.domain.ports.RecipeRepository;
