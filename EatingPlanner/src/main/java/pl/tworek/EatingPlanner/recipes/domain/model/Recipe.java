@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.ToString;
 import pl.tworek.EatingPlanner.ingredients.domain.model.Ingredient;
 import pl.tworek.EatingPlanner.recipes.domain.enumeration.EatLabel;
+import pl.tworek.EatingPlanner.recipes.domain.vo.*;
 
 import java.util.List;
 
@@ -15,6 +16,11 @@ import java.util.List;
  * What about relation between oder objects? - Check this in project.
  * What about ingredient relationship
  * Think which one are VO: All of those whichare no objects like DishPhoto or Ingredients. i think
+ *
+ * Value object are when identity does not matters. When we change value of an object destroy and object and create the new one
+ * It does not matters for VO bout an identity. Equals would return true" as long as objets properties are identical.
+ *
+ * Changing some attribute of an entity like Customer doesnt destroy the customer, its mutable.
  */
 @Getter
 @EqualsAndHashCode
@@ -22,25 +28,25 @@ import java.util.List;
 @ToString
 public class Recipe {
 
-    private final Long id;
+    private final RecipeId id;
 
-    private final String name;
+    private final RecipeTitle name;
 
     private final DishPhoto dishPhoto;
 
-    private final String description;
+    private final Description description;
 
-    private final Integer preparingTime;
+    private final PreparingTime preparingTime;
 
-    private final Integer toughness;
+    private final Toughness toughness;
 
-    private final Integer tastiness;
+    private final Tastiness tastiness;
 
-    private final Integer healthiness;
+    private final Healthiness healthiness;
 
-    private final Integer defaultServing;
+    private final DefaultServings defaultServing;
 
-    private final Double callPerServing;
+    private final CalloriesPerServing callPerServing;
 
     private final List<EatLabel> eatLabels;
 
