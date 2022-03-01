@@ -1,13 +1,11 @@
 package pl.tworek.EatingPlanner.recipes.domain.model;
 
-//TODO: Think, which field could be VO or separate model
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Value;
 import pl.tworek.EatingPlanner.ingredients.domain.model.Ingredient;
 import pl.tworek.EatingPlanner.recipes.domain.enumeration.EatLabel;
+import pl.tworek.EatingPlanner.recipes.domain.vo.*;
 
 import java.util.List;
 
@@ -15,34 +13,37 @@ import java.util.List;
  * What about relation between oder objects? - Check this in project.
  * What about ingredient relationship
  * Think which one are VO: All of those whichare no objects like DishPhoto or Ingredients. i think
+ *
+ * Value object are when identity does not matters. When we change value of an object destroy and object and create the new one
+ * It does not matters for VO bout an identity. Equals would return true" as long as objets properties are identical.
+ *
+ * Changing some attribute of an entity like Customer doesnt destroy the customer, its mutable.
  */
-@Getter
-@EqualsAndHashCode
+@Value
 @Builder
-@ToString
 public class Recipe {
 
-    private final Long id;
+    RecipeId id;
 
-    private final String name;
+    RecipeTitle name;
 
-    private final DishPhoto dishPhoto;
+    DishPhoto dishPhoto;
 
-    private final String description;
+    Description description;
 
-    private final Integer preparingTime;
+    PreparingTime preparingTime;
 
-    private final Integer toughness;
+    Toughness toughness;
 
-    private final Integer tastiness;
+    Tastiness tastiness;
 
-    private final Integer healthiness;
+    Healthiness healthiness;
 
-    private final Integer defaultServing;
+    DefaultServings defaultServing;
 
-    private final Double callPerServing;
+    CaloriesPerServing callPerServing;
 
-    private final List<EatLabel> eatLabels;
+    List<EatLabel> eatLabels;
 
-    private final List<Ingredient> ingredients;
+    List<Ingredient> ingredients;
 }
