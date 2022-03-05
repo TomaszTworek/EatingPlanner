@@ -3,9 +3,7 @@ package pl.tworek.EatingPlanner.recipes.domain.model;
 //TODO: Think, which field could be VO or separate model
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Value;
 import pl.tworek.EatingPlanner.ingredients.domain.model.Ingredient;
 import pl.tworek.EatingPlanner.recipes.domain.enumeration.EatLabel;
 import pl.tworek.EatingPlanner.recipes.domain.vo.*;
@@ -22,33 +20,31 @@ import java.util.List;
  *
  * Changing some attribute of an entity like Customer doesnt destroy the customer, its mutable.
  */
-@Getter
-@EqualsAndHashCode
+@Value
 @Builder
-@ToString
 public class Recipe {
 
-    private final RecipeId id;
+    RecipeId id;
 
-    private final RecipeTitle name;
+    RecipeTitle name;
 
-    private final DishPhoto dishPhoto;
+    DishPhoto dishPhoto;
 
-    private final Description description;
+    Description description;
 
-    private final PreparingTime preparingTime;
+    PreparingTime preparingTime;
 
-    private final Toughness toughness;
+    Toughness toughness;
 
-    private final Tastiness tastiness;
+    Tastiness tastiness;
 
-    private final Healthiness healthiness;
+    Healthiness healthiness;
 
-    private final DefaultServings defaultServing;
+    DefaultServings defaultServing;
 
-    private final CalloriesPerServing callPerServing;
+    CaloriesPerServing callPerServing;
 
-    private final List<EatLabel> eatLabels;
+    List<EatLabel> eatLabels;
 
-    private final List<Ingredient> ingredients;
+    List<Ingredient> ingredients;
 }
