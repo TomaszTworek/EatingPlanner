@@ -14,7 +14,6 @@ public class RecipeController {
 
     @PostMapping
     public RecipeResponse saveRecipe(@RequestBody RecipeRequest recipeRequest) {
-        System.out.println(recipeRequest);
         return recipeApiService.save(recipeRequest);
     }
 

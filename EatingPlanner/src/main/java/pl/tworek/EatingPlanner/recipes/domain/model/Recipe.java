@@ -1,6 +1,5 @@
 package pl.tworek.EatingPlanner.recipes.domain.model;
 
-//TODO: Think, which field could be VO or separate model
 
 import lombok.Builder;
 import lombok.Value;
