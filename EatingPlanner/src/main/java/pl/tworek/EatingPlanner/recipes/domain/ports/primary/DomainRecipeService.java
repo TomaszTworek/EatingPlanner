@@ -1,4 +1,4 @@
-package pl.tworek.EatingPlanner.recipes.domain.ports;
+package pl.tworek.EatingPlanner.recipes.domain.ports.primary;
 
 import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
 import pl.tworek.EatingPlanner.recipes.domain.ports.secondary.RecipeRepository;

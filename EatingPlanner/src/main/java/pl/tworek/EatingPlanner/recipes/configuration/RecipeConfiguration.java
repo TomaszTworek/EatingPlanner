@@ -1,13 +1,11 @@
 package pl.tworek.EatingPlanner.recipes.configuration;
 
-import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import pl.tworek.EatingPlanner.recipes.domain.ports.DomainRecipeService;
-import pl.tworek.EatingPlanner.recipes.domain.ports.RecipeService;
+import pl.tworek.EatingPlanner.recipes.domain.ports.primary.DomainRecipeService;
+import pl.tworek.EatingPlanner.recipes.domain.ports.primary.RecipeService;
 import pl.tworek.EatingPlanner.recipes.domain.ports.secondary.RecipeRepository;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.mapper.RecipeMapper;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.RecipeApiService;
@@ -26,6 +24,7 @@ public class RecipeConfiguration {
         return new RecipeApiService(recipeService(mySQLRecipeRepository), recipeMapper());
     }
 
+    @Bean
     public RecipeService recipeService(MySQLRecipeRepository mySQLRecipeRepository) {
         return new DomainRecipeService(recipeRepository(mySQLRecipeRepository));
     }
