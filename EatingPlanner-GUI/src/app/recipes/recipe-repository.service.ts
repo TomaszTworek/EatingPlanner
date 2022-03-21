@@ -1,0 +1,15 @@
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Recipe } from "./recipe.model";
+
+@Injectable()
+export class RecipeRepositoryService {
+
+    private recipeUrl: string = 'http://localhost:8080/recipe'
+    constructor(private http: HttpClient) { }
+
+    getRecipesTest(): Observable<Recipe[]> {
+        return this.http.get<Recipe[]>(this.recipeUrl + '/testDishes')
+    }
+}
