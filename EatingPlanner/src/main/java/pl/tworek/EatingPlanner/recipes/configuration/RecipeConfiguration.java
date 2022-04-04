@@ -9,6 +9,7 @@ import pl.tworek.EatingPlanner.recipes.domain.ports.primary.RecipeService;
 import pl.tworek.EatingPlanner.recipes.domain.ports.secondary.RecipeRepository;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.mapper.RecipeMapper;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.RecipeApiService;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.MySQLRecipePhotoRepository;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.MySQLRecipeRepository;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.RecipeRepositoryImpl;
 
@@ -20,17 +21,19 @@ import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.reciped
 public class RecipeConfiguration {
 
     @Bean
-    public RecipeApiService recipeApiService(@Qualifier("recipes.MySQLRecipeRepository") MySQLRecipeRepository mySQLRecipeRepository) {
-        return new RecipeApiService(recipeService(mySQLRecipeRepository), recipeMapper());
+    public RecipeApiService recipeApiService(@Qualifier("recipes.MySQLRecipeRepository") MySQLRecipeRepository mySQLRecipeRepository
+    , @Qualifier("recipes.MySQLRecipePhotoRepository") MySQLRecipePhotoRepository mySQLRecipePhotoRepository) {
+        return new RecipeApiService(recipeService(mySQLRecipeRepository, mySQLRecipePhotoRepository), recipeMapper());
     }
 
     @Bean
-    public RecipeService recipeService(MySQLRecipeRepository mySQLRecipeRepository) {
-        return new DomainRecipeService(recipeRepository(mySQLRecipeRepository));
+    public RecipeService recipeService(MySQLRecipeRepository mySQLRecipeRepository, MySQLRecipePhotoRepository mySQLRecipePhotoRepository) {
+        return new DomainRecipeService(recipeRepository(mySQLRecipeRepository, mySQLRecipePhotoRepository));
     }
 
-    public RecipeRepository recipeRepository(MySQLRecipeRepository mySQLRecipeRepository) {
-        return new RecipeRepositoryImpl(mySQLRecipeRepository, recipeMapper());
+    public RecipeRepository recipeRepository(MySQLRecipeRepository mySQLRecipeRepository,
+                                             MySQLRecipePhotoRepository mySQLRecipePhotoRepository) {
+        return new RecipeRepositoryImpl(mySQLRecipeRepository, mySQLRecipePhotoRepository,recipeMapper());
     }
 
 

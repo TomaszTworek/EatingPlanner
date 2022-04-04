@@ -27,7 +27,7 @@ public class Recipe {
 
     RecipeTitle name;
 
-    DishPhoto dishPhoto;
+    RecipePhoto recipePhoto;
 
     Description description;
 

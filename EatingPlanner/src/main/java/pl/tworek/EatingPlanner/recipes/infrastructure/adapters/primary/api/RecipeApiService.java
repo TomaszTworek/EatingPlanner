@@ -3,6 +3,8 @@ package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api;
 import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
 import pl.tworek.EatingPlanner.recipes.domain.ports.primary.RecipeService;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.mapper.RecipeMapper;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.request.RecipeRequest;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.response.RecipeResponse;
 
 public class RecipeApiService {
 

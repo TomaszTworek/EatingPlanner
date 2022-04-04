@@ -1,6 +1,8 @@
 package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api;
 
 import org.springframework.web.bind.annotation.*;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.request.RecipeRequest;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.response.RecipeResponse;
 
 @RestController
 @RequestMapping("/recipe")
