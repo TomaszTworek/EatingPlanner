@@ -7,6 +7,9 @@ import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.reque
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.response.RecipeResponse;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.entity.RecipeEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Mapper
 public interface RecipeMapper {
 
@@ -43,4 +46,19 @@ public interface RecipeMapper {
     @Mapping(target = "recipeImageResponse.url", source = "recipePhoto.url")
     RecipeResponse recipeToRecipeResponse(Recipe savedRecipe);
 
+    default List<Recipe> recipeEntitiesToRecipes(List<RecipeEntity> allRecipeEntities) {
+        List<Recipe> mappedRecipes = new ArrayList<>();
+        for (RecipeEntity recipeEntity : allRecipeEntities) {
+            mappedRecipes.add(recipeEntityToRecipe(recipeEntity));
+        }
+        return mappedRecipes;
+    }
+
+    default List<RecipeResponse> recipesToRecipeResponses(List<Recipe> allRecipes){
+        List<RecipeResponse> mappedRecipeResponses = new ArrayList<>();
+        for (Recipe recipe : allRecipes) {
+            mappedRecipeResponses.add(recipeToRecipeResponse(recipe));
+        }
+        return mappedRecipeResponses;
+    }
 }
