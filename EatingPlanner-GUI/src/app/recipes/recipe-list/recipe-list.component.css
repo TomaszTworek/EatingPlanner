@@ -1,0 +1,8 @@
+.recipe-main-container{
+    background-color: lightblue;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
