@@ -1,9 +1,6 @@
 package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.entity;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Value;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.enumeration.EatLabel;
 
 import javax.persistence.*;
@@ -32,8 +29,9 @@ public class RecipeEntity {
     @Column(name = "name")
     private String name;
 
-    @Transient
-    private DishPhotoEntity dishPhotoEntity;
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
+    @JoinColumn(name = "recipe_image_data_id", referencedColumnName = "id")
+    private RecipePhotoEntity recipePhotoEntity;
 
     @Column(name = "description")
     private String description;

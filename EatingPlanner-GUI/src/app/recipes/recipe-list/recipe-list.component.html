@@ -1,4 +1,5 @@
-<eatp-recipe-detail></eatp-recipe-detail>
-<div *ngFor="let recipe of recipes">
-  <p>{{recipe.name}}, {{recipe.description}}</p>
+<div class="recipe-main-container">
+  <div *ngFor="let recipe of recipes">
+    <eatp-recipe-item [recipe]="recipe"></eatp-recipe-item>
+  </div>
 </div>

@@ -1,19 +1,26 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { RecipeDetailComponent } from "./recipe-list/recipe-detail/recipe-detail.component";
 import { RecipeListComponent } from "./recipe-list/recipe-list.component";
 import { RecipesComponent } from "./recipes.component";
+import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
+import { MatCardModule } from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button'; 
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
     declarations: [
         RecipesComponent,
-        RecipeDetailComponent,
-        RecipeListComponent
+        RecipeListComponent,
+        RecipeItemComponent
     ],
-    imports: [CommonModule], //BrowserModule but simplier
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatGridListModule
+    ], //BrowserModule but simplier
     exports: [
         RecipesComponent,
-        RecipeDetailComponent,
         RecipeListComponent
     ]
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeRepositoryService } from '../recipe-repository.service';
-import { Recipe } from '../recipe.model';
+import { Recipe } from '../models/recipe.model';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -16,7 +16,9 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.recipeRepo.getRecipesTest().subscribe(
-      data => this.recipes = data
+      data => {
+        console.log(data);
+        this.recipes = data}
     );
   }
 
