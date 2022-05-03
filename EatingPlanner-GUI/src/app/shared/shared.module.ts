@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [SidenavComponent, HeaderComponent],
@@ -18,7 +19,8 @@ import {MatListModule} from '@angular/material/list';
     MatButtonModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    RouterModule
   ],
   exports: [SidenavComponent, HeaderComponent]
 })
