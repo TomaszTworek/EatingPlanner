@@ -6,7 +6,7 @@ import { RecipeService } from '../recipe.service';
 @Component({
   selector: 'eatp-recipe-list',
   templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.css']
+  styleUrls: ['./recipe-list.component.scss']
 })
 export class RecipeListComponent implements OnInit {
 
