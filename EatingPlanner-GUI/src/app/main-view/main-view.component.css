@@ -1,0 +1,8 @@
+.main-container{
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.content{
+    height: 100%;
+}
