@@ -21,19 +21,17 @@ import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.reciped
 public class RecipeConfiguration {
 
     @Bean
-    public RecipeApiService recipeApiService(@Qualifier("recipes.MySQLRecipeRepository") MySQLRecipeRepository mySQLRecipeRepository
-    , @Qualifier("recipes.MySQLRecipePhotoRepository") MySQLRecipePhotoRepository mySQLRecipePhotoRepository) {
-        return new RecipeApiService(recipeService(mySQLRecipeRepository, mySQLRecipePhotoRepository), recipeMapper());
+    public RecipeApiService recipeApiService(@Qualifier("recipes.MySQLRecipeRepository") MySQLRecipeRepository mySQLRecipeRepository) {
+        return new RecipeApiService(recipeService(mySQLRecipeRepository), recipeMapper());
     }
 
     @Bean
-    public RecipeService recipeService(MySQLRecipeRepository mySQLRecipeRepository, MySQLRecipePhotoRepository mySQLRecipePhotoRepository) {
-        return new DomainRecipeService(recipeRepository(mySQLRecipeRepository, mySQLRecipePhotoRepository));
+    public RecipeService recipeService(MySQLRecipeRepository mySQLRecipeRepository) {
+        return new DomainRecipeService(recipeRepository(mySQLRecipeRepository));
     }
 
-    public RecipeRepository recipeRepository(MySQLRecipeRepository mySQLRecipeRepository,
-                                             MySQLRecipePhotoRepository mySQLRecipePhotoRepository) {
-        return new RecipeRepositoryImpl(mySQLRecipeRepository, mySQLRecipePhotoRepository,recipeMapper());
+    public RecipeRepository recipeRepository(MySQLRecipeRepository mySQLRecipeRepository) {
+        return new RecipeRepositoryImpl(mySQLRecipeRepository,recipeMapper());
     }
 
 

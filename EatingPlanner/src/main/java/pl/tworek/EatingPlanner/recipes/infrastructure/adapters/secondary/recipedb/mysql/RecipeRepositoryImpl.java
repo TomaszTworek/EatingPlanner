@@ -11,13 +11,10 @@ public class RecipeRepositoryImpl implements RecipeRepository {
 
     private final MySQLRecipeRepository mySQLRecipeRepository;
 
-    private final MySQLRecipePhotoRepository mySQLRecipePhotoRepository;
-
     private final RecipeMapper mapper;
 
-    public RecipeRepositoryImpl(MySQLRecipeRepository mySQLRecipeRepository, MySQLRecipePhotoRepository mySQLRecipePhotoRepository, RecipeMapper mapper) {
+    public RecipeRepositoryImpl(MySQLRecipeRepository mySQLRecipeRepository, RecipeMapper mapper) {
         this.mySQLRecipeRepository = mySQLRecipeRepository;
-        this.mySQLRecipePhotoRepository = mySQLRecipePhotoRepository;
         this.mapper = mapper;
     }
 
