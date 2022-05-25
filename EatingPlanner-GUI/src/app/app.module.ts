@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MainViewModule } from './main-view/main-view.module';
-import { RecipeRepositoryService } from './recipes/recipe-repository.service';
+import { RecipeRepositoryService } from './shared/repositories/recipe-repository.service';
 import { RecipeService } from './recipes/recipe.service';
 import { RecipesModule } from './recipes/recipes.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,7 @@ import { PlanComponent } from './features/plan/plan.component';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list.component';
 import { StatisticsComponent } from './features/statistics/statistics.component';
 import { ProductsComponent } from './features/products/products.component';
+import { AddRecipeModule } from './features/add-recipe/add-recipe.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProductsComponent } from './features/products/products.component';
     BrowserAnimationsModule,
     RecipesModule,
     MainViewModule,
+    AddRecipeModule,
     AppRoutingModule
   ],
   providers: [RecipeRepositoryService, RecipeService],

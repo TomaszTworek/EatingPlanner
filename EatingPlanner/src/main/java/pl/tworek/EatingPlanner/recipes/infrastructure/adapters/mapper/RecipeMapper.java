@@ -15,6 +15,7 @@ public interface RecipeMapper {
 
     @Mapping(target = "name", source = "name.value")
     @Mapping(target = "description", source = "description.content")
+    @Mapping(target = "preparingTime", source = "preparingTime.time")
     @Mapping(target = "recipePhotoEntity.title", source = "recipePhoto.title")
     @Mapping(target = "recipePhotoEntity.url", source = "recipePhoto.url")
     @Mapping(target = "toughness", ignore = true)
@@ -26,6 +27,7 @@ public interface RecipeMapper {
 
     @Mapping(target = "name.value", source = "name")
     @Mapping(target = "description.content", source = "description")
+    @Mapping(target = "preparingTime.time", source = "preparingTime")
     @Mapping(target = "recipePhoto.title", source = "recipePhotoEntity.title")
     @Mapping(target = "recipePhoto.url", source = "recipePhotoEntity.url")
     @Mapping(target = "toughness", ignore = true)
@@ -36,12 +38,14 @@ public interface RecipeMapper {
 
     @Mapping(target = "name.value", source = "name")
     @Mapping(target = "description.content", source = "description")
+    @Mapping(target = "preparingTime.time", source = "preparingTime")
     @Mapping(target = "recipePhoto.title", source = "recipeImagePhoto.title")
     @Mapping(target = "recipePhoto.url", source = "recipeImagePhoto.url")
     Recipe recipeRequestToRecipe(RecipeRequest recipeRequest);
 
     @Mapping(target = "name", source = "name.value")
     @Mapping(target = "description", source = "description.content")
+    @Mapping(target = "preparingTime", source = "preparingTime.time")
     @Mapping(target = "recipeImageResponse.title", source = "recipePhoto.title")
     @Mapping(target = "recipeImageResponse.url", source = "recipePhoto.url")
     RecipeResponse recipeToRecipeResponse(Recipe savedRecipe);

@@ -1,0 +1,17 @@
+<form class="recipe-form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Recipe name</mat-label>
+    <input matInput placeholder="Ex. 'Spaghetti bolognese'" formControlName="name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput placeholder="Ex. 'One of the most popular pasta dishes eaten outside of Italy.'"
+      formControlName="description"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Preparing time</mat-label>
+    <input matInput placeholder="Ex. '45'" formControlName="preparingTime">
+  </mat-form-field>
+  <p>Complete the form to enable button.</p>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!recipeForm.valid">Submit</button>
+</form>

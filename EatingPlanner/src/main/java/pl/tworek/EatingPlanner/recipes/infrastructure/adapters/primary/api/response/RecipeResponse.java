@@ -10,6 +10,8 @@ public class RecipeResponse {
 
     private String description;
 
+    private Integer preparingTime;
+
     @JsonProperty(namespace = "recipe_image_photo")
     private RecipeImageResponse recipeImageResponse;
 }

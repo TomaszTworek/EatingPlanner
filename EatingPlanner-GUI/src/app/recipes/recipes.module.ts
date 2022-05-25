@@ -4,8 +4,8 @@ import { RecipeListComponent } from "./recipe-list/recipe-list.component";
 import { RecipesComponent } from "./recipes.component";
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { MatCardModule } from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button'; 
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
     declarations: [

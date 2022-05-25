@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeRepositoryService } from '../recipe-repository.service';
+import { RecipeRepositoryService } from '../../shared/repositories/recipe-repository.service';
 import { Recipe } from '../models/recipe.model';
-import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'eatp-recipe-list',
@@ -12,7 +11,7 @@ export class RecipeListComponent implements OnInit {
 
   recipes: Recipe[] = [];
 
-  constructor(private recipeService: RecipeService, private recipeRepo: RecipeRepositoryService) { }
+  constructor(private recipeRepo: RecipeRepositoryService) { }
 
   ngOnInit(): void {
     this.recipeRepo.getRecipesTest().subscribe(

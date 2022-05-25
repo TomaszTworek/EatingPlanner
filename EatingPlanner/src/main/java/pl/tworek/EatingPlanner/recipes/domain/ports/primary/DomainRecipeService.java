@@ -15,6 +15,7 @@ public class DomainRecipeService implements RecipeService {
 
     @Override
     public Recipe save(Recipe recipe) {
+        System.out.println(recipe);
         return recipeRepository.save(recipe);
     }
 

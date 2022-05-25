@@ -7,8 +7,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { RecipeRepositoryService } from './repositories/recipe-repository.service';
 
 @NgModule({
   declarations: [SidenavComponent, HeaderComponent],
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
     MatListModule,
     RouterModule
   ],
-  exports: [SidenavComponent, HeaderComponent]
+  exports: [SidenavComponent, HeaderComponent],
+  providers: [RecipeRepositoryService]
 })
 export class SharedModule { }

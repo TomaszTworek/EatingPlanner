@@ -51,6 +51,9 @@ public class RecipeEntity {
     @Column(name = "cal_per_serving")
     private Double calPerServing;
 
+    @Column(name = "prepare_time")
+    private Integer preparingTime;
+
     @Transient
     private List<EatLabel> eatLabel;
 
