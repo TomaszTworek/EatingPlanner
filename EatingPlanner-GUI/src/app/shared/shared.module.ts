@@ -10,9 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { RecipeRepositoryService } from './repositories/recipe-repository.service';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
-  declarations: [SidenavComponent, HeaderComponent],
+  declarations: [SidenavComponent, HeaderComponent, FileUploadComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -23,7 +24,7 @@ import { RecipeRepositoryService } from './repositories/recipe-repository.servic
     MatListModule,
     RouterModule
   ],
-  exports: [SidenavComponent, HeaderComponent],
+  exports: [SidenavComponent, HeaderComponent, FileUploadComponent],
   providers: [RecipeRepositoryService]
 })
 export class SharedModule { }

@@ -4,7 +4,7 @@
     <mat-card-title>{{recipe.name}}</mat-card-title>
     <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
   </mat-card-header>
-  <img mat-card-image [src]="recipe.recipeImageResponse.url" alt="Meal photo">
+  <img *ngIf="recipe.recipeImageResponse.url" mat-card-image [src]="recipe.recipeImageResponse.url" alt="Meal photo">
   <mat-card-content>
     <p>
       {{recipe.description}}

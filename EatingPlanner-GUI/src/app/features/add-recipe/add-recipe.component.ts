@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { Recipe } from 'src/app/recipes/models/recipe.model';
 import { RecipeRepositoryService } from 'src/app/shared/repositories/recipe-repository.service';
 
 @Component({
