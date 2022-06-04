@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InitialDataService } from './core/services/initial-data.service';
 
 @Component({
   selector: 'eatp-root',

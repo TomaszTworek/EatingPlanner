@@ -1,7 +1,7 @@
 package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.core.io.Resource;
 
 @Data
 public class RecipeResponse {
@@ -12,6 +12,5 @@ public class RecipeResponse {
 
     private Integer preparingTime;
 
-    @JsonProperty(namespace = "recipe_image_photo")
-    private RecipeImageResponse recipeImageResponse;
+    private Resource resource;
 }
