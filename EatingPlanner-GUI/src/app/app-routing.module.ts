@@ -6,7 +6,6 @@ import { ProductsComponent } from './features/products/products.component';
 import { RecipesComponent } from './features/recipes/recipes.component';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list.component';
 import { StatisticsComponent } from './features/statistics/statistics.component';
-import { FileUploadComponent } from './shared/file-upload/file-upload.component';
 
 const routes: Routes = [
   { path: 'recipes', component: RecipesComponent },
@@ -14,8 +13,7 @@ const routes: Routes = [
   { path: 'statistics', component: StatisticsComponent },
   { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'recipes/add', component: AddRecipeComponent },
-  {path: 'images', component: FileUploadComponent}
+  { path: 'recipes/add', component: AddRecipeComponent }
 ];
 
 @NgModule({

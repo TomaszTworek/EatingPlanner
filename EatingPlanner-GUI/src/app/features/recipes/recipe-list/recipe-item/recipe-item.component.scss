@@ -1,4 +1,13 @@
 .example-card {
   max-width: 250px;
+  padding: 0;
   margin: 15px;
+}
+
+:host {
+  ::ng-deep {
+    .mat-card-header-text {
+      margin: 0 ; 
+      }
+    }
 }

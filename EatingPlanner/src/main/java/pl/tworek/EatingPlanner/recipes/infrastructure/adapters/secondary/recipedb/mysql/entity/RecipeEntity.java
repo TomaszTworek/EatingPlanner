@@ -29,8 +29,9 @@ public class RecipeEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
     @JoinColumn(name = "recipe_image_data_id", referencedColumnName = "id")
+
     private RecipePhotoEntity recipePhotoEntity;
 
     @Column(name = "description")

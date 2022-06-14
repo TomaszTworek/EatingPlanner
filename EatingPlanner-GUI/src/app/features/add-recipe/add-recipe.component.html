@@ -1,3 +1,4 @@
+<button (click)="goToRecipeList()">To all recipes</button>
 <form class="recipe-form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Recipe name</mat-label>
@@ -8,6 +9,14 @@
     <textarea matInput placeholder="Ex. 'One of the most popular pasta dishes eaten outside of Italy.'"
       formControlName="description"></textarea>
   </mat-form-field>
+  <div class="row">
+    <div class="col-8">
+      <label class="btn btn-default p-0">
+        <input type="file" (change)="selectFile($event)" />
+      </label>
+    </div>
+  </div>
+  <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Preparing time</mat-label>
     <input matInput placeholder="Ex. '45'" formControlName="preparingTime">

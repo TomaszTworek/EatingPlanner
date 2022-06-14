@@ -9,10 +9,8 @@ import pl.tworek.EatingPlanner.recipes.domain.ports.primary.RecipeService;
 import pl.tworek.EatingPlanner.recipes.domain.ports.secondary.RecipeRepository;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.mapper.RecipeMapper;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.RecipeApiService;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.RecipeController;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.ImageStorageService;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.ImageStorageServiceImpl;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.MySQLRecipePhotoRepository;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.MySQLRecipeRepository;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.RecipeRepositoryImpl;
 
@@ -25,7 +23,7 @@ public class RecipeConfiguration {
 
     @Bean
     public RecipeApiService recipeApiService(@Qualifier("recipes.MySQLRecipeRepository") MySQLRecipeRepository mySQLRecipeRepository) {
-        return new RecipeApiService(recipeService(mySQLRecipeRepository), recipeMapper());
+        return new RecipeApiService(recipeService(mySQLRecipeRepository), recipeMapper(), imageStorageService());
     }
 
     @Bean

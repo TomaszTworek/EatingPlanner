@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Recipe } from '../../models/recipe.model';
+import { RecipeResponse } from '../../models/recipe-response.model';
 
 @Component({
   selector: 'eatp-recipe-item',
@@ -10,10 +10,10 @@ export class RecipeItemComponent implements OnInit {
 
   constructor() { }
 
-  @Input() recipe !: Recipe;
+  @Input() recipe !: RecipeResponse;
 
   ngOnInit(): void {
-  
+  this.recipe.image
   }
 
 }
