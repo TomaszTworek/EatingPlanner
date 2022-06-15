@@ -1,5 +1,6 @@
 .example-card {
   max-width: 250px;
+  max-height: 350px;
   padding: 0;
   margin: 15px;
 }
@@ -8,6 +9,10 @@
   ::ng-deep {
     .mat-card-header-text {
       margin: 0 ; 
+      }
+
+      .mat-card{
+        max-height: 350px;
       }
     }
 }
