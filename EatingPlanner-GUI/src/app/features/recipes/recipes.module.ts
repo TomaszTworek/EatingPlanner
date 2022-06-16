@@ -20,7 +20,7 @@ import { RecipesMenuComponent } from './recipes-menu/recipes-menu.component';
         MatCardModule,
         MatButtonModule,
         MatGridListModule
-    ], //BrowserModule but simplier
+    ],
     exports: [
         RecipesComponent,
         RecipeListComponent

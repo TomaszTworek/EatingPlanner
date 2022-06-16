@@ -2,10 +2,12 @@ import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FileUploadService {
 
-  private baseUrl = 'http://localhost:8080';
+  private baseFileUploadUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
@@ -13,7 +15,7 @@ export class FileUploadService {
     const formData: FormData = new FormData();
     formData.append('file', file);
     formData.append('recipeImageRequest', recipeName)
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.baseFileUploadUrl}/upload`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -21,10 +23,10 @@ export class FileUploadService {
   }
 
   getFiles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/files`);
+    return this.http.get(`${this.baseFileUploadUrl}/files`);
   }
 
   getFile(fileName: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/files/${fileName}`, {responseType: 'blob'})
+    return this.http.get(`${this.baseFileUploadUrl}/files/${fileName}`, {responseType: 'blob'})
   }
 }

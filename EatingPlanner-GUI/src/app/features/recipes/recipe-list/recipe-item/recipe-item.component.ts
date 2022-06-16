@@ -13,7 +13,6 @@ export class RecipeItemComponent implements OnInit {
   @Input() recipe !: RecipeResponse;
 
   ngOnInit(): void {
-  this.recipe.image
   }
 
 }

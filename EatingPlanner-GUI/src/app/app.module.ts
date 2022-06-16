@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MainViewModule } from './main-view/main-view.module';
-import { RecipeRepositoryService } from './shared/repositories/recipe-repository.service';
+import { RecipeRepositoryService } from './core/services/recipe-repository.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PlanComponent } from './features/plan/plan.component';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list.component';

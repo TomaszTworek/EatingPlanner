@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InitialDataService } from './core/services/initial-data.service';
 
 @Component({
   selector: 'eatp-root',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'EatingPlanner-GUI';
   
-  constructor() { }
+  constructor(private initialData: InitialDataService) { }
 
   ngOnInit() {
   }

@@ -4,8 +4,8 @@ import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { concat, concatMap, Observable } from 'rxjs';
-import { FileUploadService } from 'src/app/shared/repositories/file-upload.service';
-import { RecipeRepositoryService } from 'src/app/shared/repositories/recipe-repository.service';
+import { FileUploadService } from 'src/app/core/services/file-upload.service';
+import { RecipeRepositoryService } from 'src/app/core/services/recipe-repository.service';
 import { Recipe } from '../recipes/models/recipe.model';
 
 @Component({
