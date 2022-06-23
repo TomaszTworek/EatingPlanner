@@ -11,7 +11,6 @@ import { ShoppingListComponent } from './features/shopping-list/shopping-list.co
 import { StatisticsComponent } from './features/statistics/statistics.component';
 import { ProductsComponent } from './features/products/products.component';
 import { AddRecipeModule } from './features/add-recipe/add-recipe.module';
-import { RecipeService } from './features/recipes/recipe.service';
 import { RecipesModule } from './features/recipes/recipes.module';
 
 @NgModule({
@@ -31,7 +30,7 @@ import { RecipesModule } from './features/recipes/recipes.module';
     AddRecipeModule,
     AppRoutingModule
   ],
-  providers: [RecipeRepositoryService, RecipeService],
+  providers: [RecipeRepositoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

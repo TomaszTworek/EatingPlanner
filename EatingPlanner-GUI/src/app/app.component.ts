@@ -9,7 +9,7 @@ import { InitialDataService } from './core/services/initial-data.service';
 export class AppComponent {
   title = 'EatingPlanner-GUI';
   
-  constructor(private initialData: InitialDataService) { }
+  constructor() { }
 
   ngOnInit() {
   }

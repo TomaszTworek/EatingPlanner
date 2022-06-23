@@ -8,11 +8,18 @@
 :host {
   ::ng-deep {
     .mat-card-header-text {
-      margin: 0 ; 
-      }
-
-      .mat-card{
-        max-height: 350px;
-      }
+      margin: 0;
     }
+
+    .mat-card {
+      max-height: 350px;
+    }
+  }
+}
+
+.recipe-image {
+  max-width: 100%;
+  max-height: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
