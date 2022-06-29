@@ -25,7 +25,6 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  selectedFiles?: FileList;
   compressedFile!: File;
 
   recipeForm = this.fb.group({
@@ -34,42 +33,27 @@ export class AddRecipeComponent implements OnInit {
     preparingTime: ['', Validators.required]
   })
 
-  file: any;
-  localUrl: any;
-  localCompressedURl: any;
-
   selectFile(event: any): void {
-    this.selectedFiles = event.target.files;
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
+      let imageName = event.target.files[0].name;
       reader.onload = (event: any) => {
-        console.log('eventreader', event)
-        this.localUrl = event.target.result;
-        this.compressFile(this.localUrl, 'CompressedImage.jpg')
+        this.compressFile(event.target.result, imageName)
       }
       reader.readAsDataURL(event.target.files[0]);
     }
   }
 
-  imgResultBeforeCompress: string = "";
-  imgResultAfterCompress: string = "";
-
-
   compressFile(image: any, fileName: any) {
-    var orientation = -1;
+    let orientation = -1;
     this.imageCompress.compressFile(image, orientation, 50, 50).then(
       result => {
-        this.imgResultAfterCompress = result;
-        this.localCompressedURl = result;
         // create file from byte
         const imageName = fileName;
         // call method that creates a blob from dataUri
-        const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]);
+        const imageBlob = this.dataURItoBlob(result.split(',')[1]);
         //imageFile created below is the new compressed file which can be send to API in form data
-        console.log('here before',this.compressedFile)
         this.compressedFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
-        console.log('here after',this.compressedFile)
-
       });
   }
 
@@ -90,8 +74,7 @@ export class AddRecipeComponent implements OnInit {
 
     let file: File | null = null;
 
-    console.log('compressedFile', this.compressedFile)
-    if (this.selectedFiles) {
+    if (this.compressedFile) {
       file = this.compressedFile;
     }
 
@@ -101,11 +84,11 @@ export class AddRecipeComponent implements OnInit {
       preparingTime: this.recipeForm.value.preparingTime,
       recipeImageInformation: {
         name: this.recipeForm.value.name,
-        size: 11113443,
-        extension: 'jpeg'
+        size: this.compressedFile.size,
+        extension: this.compressedFile.type
       }
     }
-
+    
     this.recipeRepo.addRecipe(recipeToAdd).pipe(
       concatMap(() => this.uploadService.upload(file!, recipeToAdd.name))
     ).subscribe({
