@@ -1,17 +1,19 @@
 package pl.tworek.EatingPlanner.recipes.configuration;
 
 import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import pl.tworek.EatingPlanner.recipes.domain.ports.primary.DomainRecipeService;
-import pl.tworek.EatingPlanner.recipes.domain.ports.primary.RecipeService;
+import pl.tworek.EatingPlanner.recipes.domain.ports.primary.RecipePort;
+import pl.tworek.EatingPlanner.recipes.domain.ports.primary.RecipePortImpl;
 import pl.tworek.EatingPlanner.recipes.domain.ports.secondary.RecipeRepository;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.mapper.RecipeMapper;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.RecipeApiService;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.ImageStorageService;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.ImageStorageServiceImpl;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.MySQLRecipeRepository;
+import pl.tworek.EatingPlanner.recipes.domain.service.RecipeService;
+import pl.tworek.EatingPlanner.recipes.domain.service.RecipeServiceImpl;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.mapper.RecipeMapper;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.mapper.RecipeMapperImpl;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.mapper.RecipeResponseMapper;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.mapper.RecipeResponseMapperImpl;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.mapper.RecipeEntityMapper;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.MySQLRecipeReadRepository;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.RecipeRepositoryImpl;
 
 /**
@@ -22,27 +24,30 @@ import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.reciped
 public class RecipeConfiguration {
 
     @Bean
-    public RecipeApiService recipeApiService(@Qualifier("recipes.MySQLRecipeRepository") MySQLRecipeRepository mySQLRecipeRepository) {
-        return new RecipeApiService(recipeService(mySQLRecipeRepository), recipeMapper(), imageStorageService());
+    public RecipePort recipePort(RecipeRepository recipeRepository) {
+        return new RecipePortImpl(recipeService(recipeRepository));
+    }
+
+    private RecipeService recipeService(RecipeRepository recipeRepository) {
+        return new RecipeServiceImpl(recipeRepository);
     }
 
     @Bean
-    public RecipeService recipeService(MySQLRecipeRepository mySQLRecipeRepository) {
-        return new DomainRecipeService(recipeRepository(mySQLRecipeRepository));
+    public RecipeRepository recipeRepository(MySQLRecipeReadRepository mySQLRecipeReadRepository) {
+        return new RecipeRepositoryImpl(mySQLRecipeReadRepository, recipeEntityMapper());
+    }
+
+    private RecipeEntityMapper recipeEntityMapper() {
+        return Mappers.getMapper(RecipeEntityMapper.class);
     }
 
     @Bean
-    public ImageStorageService imageStorageService() {
-        return new ImageStorageServiceImpl();
+    public RecipeMapper recipeMapper() {
+        return new RecipeMapperImpl();
     }
 
-    public RecipeRepository recipeRepository(MySQLRecipeRepository mySQLRecipeRepository) {
-        return new RecipeRepositoryImpl(mySQLRecipeRepository, recipeMapper());
+    @Bean
+    public RecipeResponseMapper recipeResponseMapper() {
+        return new RecipeResponseMapperImpl();
     }
-
-    private RecipeMapper recipeMapper() {
-        return Mappers.getMapper(RecipeMapper.class);
-    }
-
-
 }

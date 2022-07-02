@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "recipe_image_data")
 @Data
-public class RecipePhotoEntity {
+public class RecipeImageInformationEntity {
 
     @Id
     @Column(name = "id")
@@ -23,7 +23,7 @@ public class RecipePhotoEntity {
     @Column(name = "extension")
     private String extension;
 
-    @OneToOne(mappedBy = "recipePhotoEntity")
+    @OneToOne(mappedBy = "recipeImageInformationEntity")
     private RecipeEntity recipeEntity;
 
 }

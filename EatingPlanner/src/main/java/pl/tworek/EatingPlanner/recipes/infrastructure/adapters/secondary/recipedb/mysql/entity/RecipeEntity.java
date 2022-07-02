@@ -31,8 +31,7 @@ public class RecipeEntity {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
     @JoinColumn(name = "recipe_image_data_id", referencedColumnName = "id")
-
-    private RecipePhotoEntity recipePhotoEntity;
+    private RecipeImageInformationEntity recipeImageInformationEntity;
 
     @Column(name = "description")
     private String description;

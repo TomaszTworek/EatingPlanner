@@ -4,9 +4,9 @@ import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
 
 import java.util.List;
 
-public interface RecipeService {
+public interface RecipePort {
 
-    Recipe save(Recipe recipe);
+    Recipe add(Recipe recipe);
 
     List<Recipe> getAll();
 }

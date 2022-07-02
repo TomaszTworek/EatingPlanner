@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @Getter
-public class RecipeImageInformation {
+public class RecipeImageInformationRequest {
 
     @JsonProperty("name")
     private String imageName;

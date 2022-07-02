@@ -13,5 +13,5 @@ public class RecipeRequest {
 
     private String preparingTime;
 
-    private RecipeImageInformation recipeImageInformation;
+    private RecipeImageInformationRequest recipeImageInformationRequest;
 }

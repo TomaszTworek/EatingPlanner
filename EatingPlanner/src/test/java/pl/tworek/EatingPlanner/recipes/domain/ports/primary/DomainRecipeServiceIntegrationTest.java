@@ -14,6 +14,9 @@ import pl.tworek.EatingPlanner.configuration.MainTestConfiguration;
 import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
 import pl.tworek.EatingPlanner.recipes.domain.vo.Description;
 import pl.tworek.EatingPlanner.recipes.domain.vo.RecipeTitle;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.RecipeController;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.request.RecipeRequest;
+import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.response.RecipeResponse;
 
 import java.sql.SQLException;
 
@@ -28,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DomainRecipeServiceIntegrationTest {
 
     @Autowired
-    private RecipeService recipeService;
+    private RecipeController recipeController;
 
     @BeforeAll
     public static void initTest() throws SQLException {
@@ -36,25 +39,18 @@ class DomainRecipeServiceIntegrationTest {
                 .start();
     }
 
-    @Test
-    public void shouldSaveRecipe() {
-        //given
-        Recipe recipeToSave = Recipe.builder()
-                .name(prepareRecipeTitle())
-                .description(prepareRecipeDescription()).build();
+//    @Test
+//    public void shouldSaveRecipe() {
+//        //given
+//        RecipeRequest recipeToSave = RecipeRequest.builder()
+//                .name("Test")
+//                .description("Test content").build();
+//
+//        //when
+//        RecipeResponse savedRecipe = recipeController.save(recipeToSave);
+//
+//        assertEquals("Test", savedRecipe.getName());
+//    }
 
-        //when
-        Recipe savedRecipe = recipeService.save(recipeToSave);
-
-        assertEquals("Test", savedRecipe.getName().getValue());
-    }
-
-    private Description prepareRecipeDescription() {
-        return new Description("Test content");
-    }
-
-    private RecipeTitle prepareRecipeTitle() {
-        return new RecipeTitle("Test");
-    }
 
 }

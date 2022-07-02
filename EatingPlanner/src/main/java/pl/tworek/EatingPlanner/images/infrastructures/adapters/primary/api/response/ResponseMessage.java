@@ -1,4 +1,4 @@
-package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.response;
+package pl.tworek.EatingPlanner.images.infrastructures.adapters.primary.api.response;
 
 public class ResponseMessage {
     private String message;
