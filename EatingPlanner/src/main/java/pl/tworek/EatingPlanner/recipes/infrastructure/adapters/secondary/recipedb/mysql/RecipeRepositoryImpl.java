@@ -3,6 +3,7 @@ package pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipe
 import lombok.RequiredArgsConstructor;
 import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
 import pl.tworek.EatingPlanner.recipes.domain.ports.secondary.RecipeRepository;
+import pl.tworek.EatingPlanner.recipes.domain.vo.RecipeName;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.mapper.RecipeEntityMapper;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.recipedb.mysql.entity.RecipeEntity;
 
@@ -26,5 +27,10 @@ public class RecipeRepositoryImpl implements RecipeRepository {
     public List<Recipe> getAll() {
         List<RecipeEntity> allRecipeEntities = mySQLRecipeReadRepository.findAll();
         return mapper.map(allRecipeEntities);
+    }
+
+    @Override
+    public boolean existsByName(RecipeName name) {
+        return mySQLRecipeReadRepository.existsByName(name.getValue());
     }
 }
