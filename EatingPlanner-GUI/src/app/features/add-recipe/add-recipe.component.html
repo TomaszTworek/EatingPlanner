@@ -1,4 +1,5 @@
 <button (click)="goToRecipeList()">To all recipes</button>
+<mat-card *ngIf="this.showErrorMessage">{{errorMessage}}</mat-card>
 <form class="recipe-form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Recipe name</mat-label>

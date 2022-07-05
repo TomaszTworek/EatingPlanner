@@ -2,7 +2,6 @@ package pl.tworek.EatingPlanner.recipes.domain.ports.primary;
 
 import org.h2.tools.Server;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -11,12 +10,7 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import pl.tworek.EatingPlanner.configuration.MainTestConfiguration;
-import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
-import pl.tworek.EatingPlanner.recipes.domain.vo.Description;
-import pl.tworek.EatingPlanner.recipes.domain.vo.RecipeTitle;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.RecipeController;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.request.RecipeRequest;
-import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.response.RecipeResponse;
 
 import java.sql.SQLException;
 

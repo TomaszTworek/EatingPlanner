@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
 import pl.tworek.EatingPlanner.recipes.domain.ports.primary.RecipePort;
+import pl.tworek.EatingPlanner.recipes.domain.vo.RecipeName;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.mapper.RecipeMapper;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.mapper.RecipeResponseMapper;
 import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.primary.api.request.RecipeRequest;
@@ -34,5 +35,11 @@ public class RecipeController {
     public List<RecipeResponse> getAll() {
         final List<Recipe> recipes = recipePort.getAll();
         return recipeResponseMapper.map(recipes);
+    }
+
+    @GetMapping("/existsByName")
+    public Boolean existsByName(@RequestParam("name") final String name) {
+        final RecipeName recipeName = new RecipeName(name);
+        return recipePort.exists(recipeName);
     }
 }

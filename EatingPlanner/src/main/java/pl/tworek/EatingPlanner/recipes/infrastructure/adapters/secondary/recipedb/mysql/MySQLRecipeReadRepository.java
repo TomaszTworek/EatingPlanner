@@ -6,4 +6,6 @@ import pl.tworek.EatingPlanner.recipes.infrastructure.adapters.secondary.reciped
 
 @Repository("recipes.MySQLRecipeRepository")
 public interface MySQLRecipeReadRepository extends JpaRepository<RecipeEntity, Long> {
+
+    boolean existsByName(String name);
 }

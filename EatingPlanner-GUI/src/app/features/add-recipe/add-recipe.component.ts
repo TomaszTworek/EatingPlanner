@@ -26,6 +26,9 @@ export class AddRecipeComponent implements OnInit {
   ngOnInit(): void { }
 
   compressedFile!: File;
+  exists: boolean = true;
+  errorMessage: string = '';
+  showErrorMessage: boolean = false;
 
   recipeForm = this.fb.group({
     name: ['', Validators.required],
@@ -68,7 +71,7 @@ export class AddRecipeComponent implements OnInit {
     return blob;
   }
 
-  onSubmit(): void {
+  async onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.recipeForm.value);
 
@@ -77,8 +80,27 @@ export class AddRecipeComponent implements OnInit {
     if (this.compressedFile) {
       file = this.compressedFile;
     }
+    await this.recipeExists(this.recipeForm.value.name);
+    if (!this.exists) {
+      const recipeToAdd: Recipe = this.prepareRecipeToAdd();
+      this.addRecipe(recipeToAdd, file);
+    } else {
+      this.displayErrorMessage(this.recipeForm.value.name);
+    }
 
-    const recipeToAdd: Recipe = {
+  }
+
+  async recipeExists(name: string) {
+    return await this.recipeRepo.checkIfExists(name).then(
+      data => {
+        this.exists = data
+      }
+    );
+  }
+
+
+  private prepareRecipeToAdd(): Recipe {
+    return {
       name: this.recipeForm.value.name,
       description: this.recipeForm.value.description,
       preparingTime: this.recipeForm.value.preparingTime,
@@ -88,7 +110,9 @@ export class AddRecipeComponent implements OnInit {
         extension: this.compressedFile.type
       }
     }
-    
+  }
+
+  private addRecipe(recipeToAdd: Recipe, file: File | null): void {
     this.recipeRepo.addRecipe(recipeToAdd).pipe(
       concatMap(() => this.uploadService.upload(file!, recipeToAdd.name))
     ).subscribe({
@@ -101,4 +125,16 @@ export class AddRecipeComponent implements OnInit {
   goToRecipeList(): void {
     this.router.navigate(['recipes']);
   }
+
+  displayErrorMessage(name: string) {
+    this.errorMessage = `Recipe with name: ${name} already exists`;
+    this.showErrorMessage = true;
+    setTimeout(() =>{
+      this.showErrorMessage = false;
+    }, 5000);
+  }
+
 }
+
+
+

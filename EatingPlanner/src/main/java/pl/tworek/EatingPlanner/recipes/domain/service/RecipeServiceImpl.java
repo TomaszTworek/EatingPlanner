@@ -1,8 +1,10 @@
 package pl.tworek.EatingPlanner.recipes.domain.service;
 
 import lombok.RequiredArgsConstructor;
+import pl.tworek.EatingPlanner.recipes.domain.exceptions.InvalidRecipeName;
 import pl.tworek.EatingPlanner.recipes.domain.model.Recipe;
 import pl.tworek.EatingPlanner.recipes.domain.ports.secondary.RecipeRepository;
+import pl.tworek.EatingPlanner.recipes.domain.vo.RecipeName;
 
 import java.util.List;
 
@@ -18,6 +20,16 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe add(Recipe recipe) {
+        final RecipeName name = recipe.getName();
+        if (exists(name)) {
+            throw new InvalidRecipeName(name);
+        }
         return recipeRepository.save(recipe);
     }
+
+    @Override
+    public Boolean exists(RecipeName name) {
+        return recipeRepository.existsByName(name);
+    }
+
 }

@@ -25,7 +25,7 @@ public class Recipe {
 
     RecipeId id;
 
-    RecipeTitle name;
+    RecipeName name;
 
     RecipeImageInformation recipeImageInformation;
 
