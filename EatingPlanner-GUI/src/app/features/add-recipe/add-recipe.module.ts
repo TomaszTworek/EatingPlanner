@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddRecipeComponent } from './add-recipe.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatInputModule } from '@angular/material/input';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AddRecipeComponent } from './add-recipe.component';
 
 @NgModule({
   declarations: [AddRecipeComponent],
@@ -20,7 +21,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     BrowserAnimationsModule,
     BrowserModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   exports: [AddRecipeComponent]
 })

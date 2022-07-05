@@ -21,13 +21,15 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public Recipe add(Recipe recipe) {
         final RecipeName name = recipe.getName();
-        if (recipeWithNameExists(name)) {
+        if (exists(name)) {
             throw new InvalidRecipeName(name);
         }
         return recipeRepository.save(recipe);
     }
 
-    private boolean recipeWithNameExists(RecipeName name) {
+    @Override
+    public Boolean exists(RecipeName name) {
         return recipeRepository.existsByName(name);
     }
+
 }
